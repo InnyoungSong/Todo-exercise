@@ -1,0 +1,8 @@
+.row{
+    padding: 10px;
+}
+.row .done-button{
+}
+.row:has(.active-button){
+ background-color: grey
+}
