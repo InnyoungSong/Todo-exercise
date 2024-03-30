@@ -16,8 +16,9 @@ $(document).ready(function() {
                 tasks.forEach(function(task){
                     var taskName = task.content;
                     var taskid = task.id;
-                    console.log(taskName);
-                    createTableRow(taskName, taskid);
+                    var taskStatus = task.completed;
+                    console.log(task, taskName, taskStatus);
+                    createTableRow(taskName, taskid, taskStatus);
                 })
 
             // response is a parsed JavaScript object instead of raw JSON
@@ -27,11 +28,15 @@ $(document).ready(function() {
             }
         });
     }
-    var createTableRow = function(todo, id){
+    var createTableRow = function(todo, id, completeStatus){
         table.append('<div class="row"></div>');
         var newTableRow = table.find($(".row:last-child"));
         newTableRow.append('<div class="col-8" taskid="' + id + '"><p>' + todo + '</p></div>');
-        newTableRow.append('<div class="col-2"><button class="done-button btn">Done</button></div>');
+        if (completeStatus == true){
+            newTableRow.append('<div class="col-2"><button class="active-button btn">Active</button></div>');
+        }else{
+            newTableRow.append('<div class="col-2"><button class="done-button btn">Done</button></div>');
+        }
         newTableRow.append('<div class="col-2"><button class="remove-button btn">remove</button></div>');
     };
 

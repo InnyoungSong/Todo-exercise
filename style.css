@@ -4,5 +4,5 @@
 .row .done-button{
 }
 .row:has(.active-button){
- background-color: grey
+ background-color: rgb(199, 241, 202)
 }
